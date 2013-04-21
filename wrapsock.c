@@ -30,7 +30,7 @@ int Bind(int sockfd,const struct sockaddr *myaddr,socklen_t addrlen)
 		perror("bind error");
 		exit(1);
 	}
-	return 0;
+	return ret;
 }
 
 int Listen(int sockfd,int backlog)
@@ -41,7 +41,7 @@ int Listen(int sockfd,int backlog)
 		perror("listen error");
 		exit(1);
 	}
-	return 0;
+	return ret;
 }
 
 int Accept(int sockfd,struct sockaddr *cliaddr,socklen_t *addrlen)
@@ -52,7 +52,7 @@ int Accept(int sockfd,struct sockaddr *cliaddr,socklen_t *addrlen)
 		perror("accept error");
 		exit(1);
 	}
-	return 0;
+	return ret;
 }
 
 int Fork()

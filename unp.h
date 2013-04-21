@@ -7,7 +7,9 @@
 #include<errno.h>
 #include<sys/socket.h> //socket();
 #include<netinet/in.h> //struct sockaddr_in
+#include<sys/wait.h>
+#include<signal.h>
 
-#define SERV_PORT 7000
+#define SERV_PORT 9877
 #define MAXLINE   80
 #endif

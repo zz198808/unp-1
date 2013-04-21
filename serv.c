@@ -15,6 +15,17 @@ again:
 		perror("str_echo:read error");
 }
 
+void sig_chld(int signo)
+{
+	pid_t pid;
+	int stat;
+	while( (pid = waitpid(-1,&stat,WNOHANG))>0 )
+	{
+		printf("child %d terminated\n",pid);
+	}
+	return;
+}
+
 int main(int argc,char **argv)
 {
 	int listenfd,connfd;
@@ -31,6 +42,8 @@ int main(int argc,char **argv)
 
 	Bind(listenfd,&servaddr,sizeof(servaddr));
 	Listen(listenfd,20);
+	
+	signal(SIGCHLD,sig_chld);
 
 	printf("server is listening\n");
 
